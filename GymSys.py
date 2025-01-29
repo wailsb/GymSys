@@ -565,8 +565,10 @@ class Ui_MainWindow(object):
             self.tableWidget.insertRow(p)
 
         self.codeSerialMain=""
-        self.aftermonth=add_months(datetime.today(),1).strftime('%m/%d/%Y')
-
+        try:
+            self.aftermonth=add_months(datetime.today(),1).strftime('%m/%d/%Y')
+        except:
+            self.aftermonth=datetime.today().strftime('%m/%d/%Y')
         self.AddDE.setDate(QDate.fromString(self.aftermonth,"MM/dd/yyyy"))
         self.ModDE.setDate(QDate.fromString(self.aftermonth,"MM/dd/yyyy"))
         CreateMTable()
